@@ -17,6 +17,27 @@
         {% if post.post_image %}
             <img src="{{ post.post_image.url }}" class="max-w-full h-auto mb-8 rounded-lg shadow-lg" alt="Post Image">
         {% endif %}
+        Does it new? {{ time_delta }}
+        <br>
+        <a href="{%url 'post_list'%}" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Back
+        </a>
+        <h2 class="text-2xl mt-8 mb-4">Comments:</h2>
+        <ul>
+            {% if commentaries %}
+                {% for comment in commentaries %}
+                    <li class="bg-white rounded-lg shadow-md p-4 mb-4">
+                        <p class="text-lg text-gray-800 font-semibold">{{ comment.author_name }}</p>
+                        <p class="text-gray-600">{{ comment.text }}</p>
+                        <p class="text-gray-500 text-sm">{{ comment.publish_date }}</p>
+                    </li>
+                {% endfor %}
+            {% else %}
+            <li>
+                <p>No comments</p>
+            </li>
+            {% endif %}
+        </ul>
     </div>
 </body>
 </html>
